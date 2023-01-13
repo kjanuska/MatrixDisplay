@@ -9,6 +9,7 @@ import dbus
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
 app.config['IMAGE_FOLDER'] = "./images"
+app.config['SECRET_KEY'] = 'fajkhSA7DYinDFN7DFNsdf98UNf'
 
 dir = os.path.dirname(__file__)
 filename = os.path.join(dir, '../../config/rgb_options.ini')
@@ -74,17 +75,20 @@ def handle_refresh_rate():
 @app.route('/image', methods=['POST'])
 def handle_image():
     # check if the post request has the file part
-    if 'file' not in request.files:
-        flash('No file part')
-        return
-    file = request.files['file']
+    print(request.files)
+    # if 'file' not in request.files:
+    #     flash('No file part')
+    #     return
+    # file = request.files['file']
     # if user does not select file, browser also
     # submit a empty part without filename
-    if file.filename == '':
-        flash('No selected file')
-        return
-    if file:
-        file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+    # if file.filename == '':
+    #     flash('No selected file')
+    #     return
+    # if file:
+    #     file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
 
-app.run(host='0.0.0.0', port=80) 
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
 

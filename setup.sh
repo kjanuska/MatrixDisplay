@@ -9,6 +9,9 @@ pip install pillow --upgrade
 echo "Installing flask library:"
 pip install flask --upgrade
 
+echo "Installing waitress library:"
+pip install waitress --upgrade
+
 install_path=$(pwd)
 
 echo "Downloading rgb-matrix software setup:"
