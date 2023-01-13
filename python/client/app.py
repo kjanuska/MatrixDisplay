@@ -8,7 +8,7 @@ import dbus
 
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
-app.config['IMAGE_FOLDER'] = "./images"
+app.config['IMAGE_FOLDER'] = "/home/pi/MatrixDisplay/python/client/images"
 app.config['SECRET_KEY'] = 'fajkhSA7DYinDFN7DFNsdf98UNf'
 
 dir = os.path.dirname(__file__)
@@ -75,7 +75,9 @@ def handle_refresh_rate():
 @app.route('/image', methods=['POST'])
 def handle_image():
     # check if the post request has the file part
-    print(request.files)
+    image = request.files("image")
+    image.save(os.path.join(app.config["IMAGE_FOLDER"], "image.png"))
+    return "", 200
     # if 'file' not in request.files:
     #     flash('No file part')
     #     return
@@ -90,5 +92,5 @@ def handle_image():
 
 if __name__ == "__main__":
     from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+    serve(app, host="0.0.0.0", port=80)
 
