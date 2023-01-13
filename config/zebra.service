@@ -1,0 +1,12 @@
+[Unit]
+Description=Zebra led matrix web service
+
+[Service]
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=zebra
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
