@@ -8,7 +8,7 @@ import dbus
 
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
-app.config['IMAGE_FOLDER'] = "/home/pi/MatrixDisplay/python/client/images"
+app.config['IMAGE_FOLDER'] = os.path.join(os.path.dirname(__file__), "images")
 app.config['SECRET_KEY'] = 'fajkhSA7DYinDFN7DFNsdf98UNf'
 
 dir = os.path.dirname(__file__)

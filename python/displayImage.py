@@ -41,8 +41,9 @@ def displayImage():
     matrix = RGBMatrix(options = options)
 
     try:
-        response = requests.get(imageURL)
-        image = Image.open(BytesIO(response.content))
+        image = os.path.join(dir, "images", "image.png")
+        print(image)
+        image = Image.open(os.path.join(dir, "images", "image.png"))
         image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
         matrix.SetImage(image.convert('RGB'))
         time.sleep(1)
