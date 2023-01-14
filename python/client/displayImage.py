@@ -36,8 +36,6 @@ def displayImage():
     options.brightness = int(config['DEFAULT']['brightness'])
     options.limit_refresh_rate_hz = int(config['DEFAULT']['refresh_rate'])
 
-    default_image = os.path.join(dir, config['DEFAULT']['default_image'])
-    print(default_image)
     matrix = RGBMatrix(options = options)
 
     try:
@@ -48,7 +46,7 @@ def displayImage():
         matrix.SetImage(image.convert('RGB'))
         time.sleep(1)
     except Exception as e:
-        image = Image.open(default_image)
+        image = Image.open(os.path.join(dir, "images", "zebra.png"))
         image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
         matrix.SetImage(image.convert('RGB'))
         print(e)
