@@ -5,6 +5,7 @@ from flask import Flask, flash, render_template, request
 import sys,os
 import configparser
 import dbus
+from displayImage import displayImage
 
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
@@ -77,6 +78,7 @@ def handle_image():
     # check if the post request has the file part
     image = request.files["image"]
     image.save(os.path.join(app.config["IMAGE_FOLDER"], "image.png"))
+    displayImage()
     return "", 200
     # if 'file' not in request.files:
     #     flash('No file part')
