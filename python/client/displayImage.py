@@ -9,6 +9,13 @@ from rgbmatrix import RGBMatrix, RGBMatrixOptions
 import sys,os
 import configparser
 
+def make_square(im, fill_color=(0, 0, 0, 0)):
+    x, y = im.size
+    size = 64
+    new_im = Image.new('RGBA', (size, size), fill_color)
+    new_im.paste(im, (int((size - x) / 2), int((size - y) / 2)))
+    return new_im
+
 def displayImage():
     # Configuration file    
     dir = os.path.dirname(__file__)
@@ -44,6 +51,7 @@ def displayImage():
                 image = os.path.join(dir, "images", "image.png")
                 print(image)
                 image = Image.open(os.path.join(dir, "images", "image.png"))
+                image = make_square(image)
                 image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
                 matrix.SetImage(image.convert('RGB'), unsafe=True)
                 time.sleep(1)
