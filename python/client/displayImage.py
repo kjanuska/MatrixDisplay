@@ -49,9 +49,8 @@ def displayImage():
         while True:
             try:
                 image = os.path.join(dir, "images", "image.png")
-                print(image)
                 image = Image.open(os.path.join(dir, "images", "image.png"))
-                image = make_square(image)
+                # image = make_square(image)
                 image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
                 matrix.SetImage(image.convert('RGB'), unsafe=False)
                 time.sleep(1)
