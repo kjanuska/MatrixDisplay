@@ -75,7 +75,7 @@ def handle_refresh_rate():
 @app.route('/image', methods=['POST'])
 def handle_image():
     # check if the post request has the file part
-    image = request.files("image")
+    image = request.files["image"]
     image.save(os.path.join(app.config["IMAGE_FOLDER"], "image.png"))
     return "", 200
     # if 'file' not in request.files:
