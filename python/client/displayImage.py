@@ -39,15 +39,19 @@ def displayImage():
     matrix = RGBMatrix(options = options)
 
     try:
-        image = os.path.join(dir, "images", "image.png")
-        print(image)
-        image = Image.open(os.path.join(dir, "images", "image.png"))
-        image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-        matrix.SetImage(image.convert('RGB'))
-        time.sleep(1)
+        while True:
+            try:
+                image = os.path.join(dir, "images", "image.png")
+                print(image)
+                image = Image.open(os.path.join(dir, "images", "image.png"))
+                image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+                matrix.SetImage(image.convert('RGB'))
+                time.sleep(1)
+            except Exception as e:
+                image = Image.open(os.path.join(dir, "images", "zebra.png"))
+                image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+                matrix.SetImage(image.convert('RGB'))
+                print(e)
+                time.sleep(1)
     except Exception as e:
-        image = Image.open(os.path.join(dir, "images", "zebra.png"))
-        image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-        matrix.SetImage(image.convert('RGB'))
-        print(e)
-        time.sleep(1)
+        sys.exit(0)
