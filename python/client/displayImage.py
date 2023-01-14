@@ -12,7 +12,7 @@ import configparser
 def displayImage():
     # Configuration file    
     dir = os.path.dirname(__file__)
-    filename = os.path.join(dir, '../config/rgb_options.ini')
+    filename = os.path.join(dir, '../../config/rgb_options.ini')
 
     # Configures logger for storing song data    
     logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', filename='spotipy.log',level=logging.INFO)
