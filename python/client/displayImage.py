@@ -50,8 +50,8 @@ def displayImage():
             try:
                 image = os.path.join(dir, "images", "image.png")
                 image = Image.open(os.path.join(dir, "images", "image.png"))
-                # image = make_square(image)
                 image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+                image = make_square(image)
                 matrix.SetImage(image.convert('RGB'), unsafe=False)
                 time.sleep(1)
             except Exception as e:
