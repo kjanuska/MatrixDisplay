@@ -45,7 +45,7 @@ def displayImage():
                 print(image)
                 image = Image.open(os.path.join(dir, "images", "image.png"))
                 image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-                matrix.SetImage(image.convert('RGB'))
+                matrix.SetImage(image.convert('RGB'), unsafe=True)
                 time.sleep(1)
             except Exception as e:
                 image = Image.open(os.path.join(dir, "images", "zebra.png"))
